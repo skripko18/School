@@ -1,0 +1,94 @@
+<app-teacher-nav>
+  <mat-card class="form-card center" *ngIf="editCourse">
+    <mat-card-header>
+      <mat-card-title>Редактирование курса</mat-card-title>
+    </mat-card-header>
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)"
+                 size="medium"
+                 color="#ffffff"
+                 type="line-spin-fade">
+    </ngx-spinner>
+
+    <form class="form ng-pristine ng-untouched ng-valid" #newForm="ngForm" novalidate="">
+
+      <div class="form-group">
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Название" [(ngModel)]="newCourse.Name" name="Name" required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Направление курсов" [(ngModel)]="newCourse.IdDirection" name="IdDirection">
+            <mat-option *ngFor="let direction of directions" [value]="direction.Id">
+              {{direction.Direction}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Описание курса" [(ngModel)]="newCourse.Description" name="Description" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Необходимые навыки" [(ngModel)]="newCourse.Skills" name="Skills" required></textarea>
+        </mat-form-field>
+
+
+
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Дата начала курса" [matDatepicker]="dateStart"
+                 [(ngModel)]="newCourse.DateStart" name="DateStart" disabled>
+          <mat-datepicker-toggle matPrefix [for]="dateStart"></mat-datepicker-toggle>
+          <mat-datepicker #dateStart disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div style="display:inline-block">
+        <button mat-raised-button color="primary" [disabled]="!newForm.valid" (click)="EditCourse()">Изменить</button>
+      </div>
+
+    </form>
+  </mat-card>
+  <mat-card class="form-card center">
+    <h1>Созданные курсы</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Название</td>
+          <td>Описание курса</td>
+          <td>Необходимые навыки</td>
+          <td>Дата старта</td>
+          <td>Статус</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses">
+          <td>{{course.Name}}</td>
+          <td>{{course.Description}}</td>
+          <td>{{course.Skills}}</td>
+          <td>{{course.DateStart | dateFormatPipe}}</td>
+          <td>{{course.Status}}</td>
+
+          <td style="width:150px; text-align:center">
+            <input *ngIf="course.Status == 'Новый'" type="button" value="Программа" (click)="program(course.Id)" class="btn btn-primary button" />
+            <input *ngIf="course.Status == 'Новый'" type="button" value="Задания" (click)="homework(course.Id)" class="btn btn-primary button" />
+            <input *ngIf="course.Status == 'Новый'" type="button" value="Материалы" (click)="material(course.Id)" class="btn btn-primary button" />
+            <input *ngIf="course.Status == 'Новый'" type="button" value="Изменить" (click)="edit(course)" class="btn btn-secondary button" />
+            <input *ngIf="course.Status == 'Новый'" type="button" value="В обработку" (click)="finishCreateCourse(course.Id)" class="btn btn-success button" />
+            <input *ngIf="course.Status == 'Новый' ||course.Status == 'Ожидает размещения'
+                   ||course.Status == 'Не прошел проверку'" type="button" value="Удалить" (click)="delCourse(course.Id)" class="btn btn-danger button" />
+            <input *ngIf="course.Status != 'Новый'" type="button" value="Инфо" (click)="info(course.Id)" class="btn btn-dark button" />
+            <input *ngIf="course.Status == 'Активен'" type="button" value="Начать" (click)="start(course.Id)" class="btn btn-success button" />
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </mat-card>
+</app-teacher-nav>
+
+

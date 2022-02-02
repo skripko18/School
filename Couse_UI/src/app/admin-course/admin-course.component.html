@@ -1,0 +1,37 @@
+<app-admin-nav>
+ 
+  <mat-card class="form-card center">
+    <h1>Созданные курсы</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Автор</td>
+          <td>Название</td>
+          <td>Направление</td>
+          <td>Дата старта</td>
+          <td>Статус</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of  tempResult$ | async">
+          <td>{{course.TeacherDirection.FIO}}</td>
+          <td>{{course.Name}}</td>
+          <td>{{course.Direction.Direction}}</td>
+          <td>{{course.DateStart | dateFormatPipe}}</td>
+          <td>{{course.Status}}</td>
+
+          <td style="width:125px; text-align:center">
+            <input  *ngIf="course.Status != 'Новый'" type="button" value="Инфо" (click)="info(course.Id)" class="btn btn-dark button" />
+            <input  *ngIf="course.Status == 'Ожидает размещения'" type="button" value="Принять" (click)="approve(course.Id)" class="btn btn-success button" />
+            <input *ngIf="course.Status == 'Ожидает размещения'" type="button" value="Отклонить" (click)="reject(course.Id)" class="btn btn-danger button" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </mat-card>
+</app-admin-nav>
+
+

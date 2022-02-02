@@ -1,0 +1,10 @@
+<app-main-nav>
+
+  <mat-card class="form-card center" *ngFor="let course of courses">
+    <h4 class="name">{{course.Name}}</h4>
+    <input type="button" value="Инфо" (click)="info(course.Id)" class="btn btn-dark button" />
+  </mat-card>
+</app-main-nav>
+
+
+

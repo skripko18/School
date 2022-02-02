@@ -1,0 +1,26 @@
+<app-main-nav>
+ 
+  <mat-card class="form-card center">
+    <h1>Доступные курсы</h1>
+    <mat-card class="form-card-course center" *ngFor="let course of tempResult$ | async">
+      <h4 class="name">{{course.Name}}</h4>
+      <h4 class="title">Автор курса: {{course.TeacherDirection.FIO}}, {{course.TeacherDirection.Experience}} в {{course.TeacherDirection.Workplace}}</h4>
+      <h4 class="title">Направление курса: {{course.Direction.Direction}}</h4>
+      <h4 class="title-2">Описание:</h4>
+      <p>{{course.Description}}</p>
+      <h4 class="title-2">Необходимые навыки:</h4>
+      <p>{{course.Skills}}</p>
+      <input type="button" value="Программа" (click)="info(course.Id)" class="btn btn-dark button" />
+      <input type="button" value="Записаться" (click)="order(course)" class="btn btn-success button" />
+
+    </mat-card>
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageIndex]="pageIndex"
+                   [pageSizeOptions]="[10, 15]"
+                   (page)="pageEvent = changePageEvent($event)">
+    </mat-paginator>
+  </mat-card>
+</app-main-nav>
+
+

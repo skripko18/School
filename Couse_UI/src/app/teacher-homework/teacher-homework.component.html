@@ -1,0 +1,47 @@
+<app-teacher-nav>
+  <mat-card class="form-card center">
+    <form #homeworkForm="ngForm" class="form-card ">
+      <mat-form-field class="input-width">
+        <input matInput [(ngModel)]="newHomework.Description" name="Description" placeholder="Описание" required>
+      </mat-form-field>
+      <mat-form-field class="input-width">
+        <input matInput [(ngModel)]="newHomework.Link" name="Link" placeholder="Ссылка">
+      </mat-form-field>
+
+      <div style="display:inline-block">
+        <button mat-raised-button color="primary" [disabled]="!homeworkForm.valid" (click)="AddHomework()">
+          Добавить
+        </button>
+      </div>
+
+    </form>
+    <h1>Домашние задания</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr class="head">
+          <td>Описание</td>
+          <td>Ссылка</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of tempResult$ | async">
+          <td>{{item.Description}}</td>
+          <td>{{item.Link}}</td>
+          <td>
+            <input type="button" value="Удалить" (click)="deleteHomework(item.Id)" class="btn btn-danger" />
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageIndex]="pageIndex"
+                   [pageSizeOptions]="[10, 15]"
+                   (page)="pageEvent = changePageEvent($event)">
+    </mat-paginator>
+
+  </mat-card>
+</app-teacher-nav>
+

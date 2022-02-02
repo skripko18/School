@@ -1,0 +1,59 @@
+.form {
+  min-width: 150px;
+  max-width: 1500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-card {
+  max-width: 1500px;
+}
+.form-card-course {
+  max-width: 1500px;
+  background-color:aliceblue;
+}
+.center {
+  width: 90%;
+  margin: 50px auto;
+}
+
+.submit-button {
+  margin-top: 20px;
+}
+
+.head {
+  color: white;
+  background-color: #283593
+}
+
+.button {
+  margin: 0px 40px;
+  text-align: center;
+  width: 125px;
+}
+
+.title {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.title-2 {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.status {
+  font-size: 18px;
+}
+
+.name {
+  text-align: center;
+  margin-bottom: 16px;
+}

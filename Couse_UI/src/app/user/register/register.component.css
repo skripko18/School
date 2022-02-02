@@ -1,0 +1,61 @@
+.login-form {
+  min-width: 150px;
+  max-width: 600px;
+  width: 100%;  
+}
+
+.field-full-width {
+  width: 100%;
+}
+
+.login-card {
+  max-width: 500px;
+}
+
+.center{
+  width: 75%;
+  margin: 80px auto;
+}
+
+.error-message {
+  color: red;
+  margin: 5px 50px;
+}
+.sign-in {
+  display: inline-block;
+  margin-left: 50px;
+}
+.d-flex {
+  background: #283593
+}
+
+.header {
+  width: 100%;
+  position: sticky;
+  z-index: 1000;
+  font-family: "Roboto";
+  top: 0;
+}
+
+.title {
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: oblique;
+  font-weight: 600;
+  font-size: 48px;
+  margin: 0 5px;
+  padding: 0 5px;
+  margin-bottom: 15px;
+}
+
+.nav a {
+  font-style: oblique;
+  font-weight: 600;
+  font-size: 36px;
+  padding: 15px !important;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none !important;
+}

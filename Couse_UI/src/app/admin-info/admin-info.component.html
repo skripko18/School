@@ -1,0 +1,25 @@
+<app-admin-nav>
+
+  <mat-card class="form-card center" *ngIf="courses && homework && material && program">
+    <h4 class="name">{{courses.Name}}</h4>
+    <h4 class="title">Автор курса: {{courses.TeacherDirection.FIO}}, {{courses.TeacherDirection.Experience}} в {{courses.TeacherDirection.Workplace}}</h4>
+    <h4 class="title">Направление курса: {{courses.Direction.Direction}}</h4>
+    <h4 class="title-2">Описание:</h4>
+    <p>{{courses.Description}}</p>
+    <h4 class="title-2">Необходимые навыки:</h4>
+    <p>{{courses.Skills}}</p>
+    <h4 class="title">Дата старта: {{courses.DateStart | dateFormatPipe}}</h4>
+    <h4 class="title">Статус: {{courses.Status}}</h4>
+    <br>
+    <h4 class="name">Программа курса</h4>
+    <h4 class="title" *ngFor="let programs of program">- {{programs.Theme}}</h4>
+    <h4 class="name">Домашние задания</h4>
+    <h4 class="title" *ngFor="let homeworks of homework">- {{homeworks.Description}} <a *ngIf="homeworks.Link != ''" href="{{homeworks.Link}}" target="_blank">Ссылка</a></h4>
+   
+    <h4 class="name">Материалы для изучения</h4>
+    <h4 class="title" *ngFor="let materials of material">- {{materials.Description}} <a href="{{materials.Link}}" target="_blank">Ссылка</a></h4>
+  </mat-card>
+</app-admin-nav>
+
+
+

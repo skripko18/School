@@ -1,0 +1,42 @@
+<app-teacher-nav>
+  <mat-card class="form-card center">
+    <form #programForm="ngForm" class="form-card ">
+      <mat-form-field class="input-width">
+        <input matInput [(ngModel)]="newProgram.Theme" name="Theme" placeholder="Тема" required>
+      </mat-form-field>
+
+      <div style="display:inline-block">
+        <button mat-raised-button color="primary" [disabled]="!programForm.valid" (click)="AddProgram()">
+          Добавить
+        </button>
+      </div>
+
+    </form>
+    <h1>Программа курса</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr class="head">
+          <td>Тема</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of tempResult$ | async">
+          <td>{{item.Theme}}</td>
+          <td>
+          <input type="button" value="Удалить" (click)="deleteProgram(item.Id)" class="btn btn-danger" />
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageIndex]="pageIndex"
+                   [pageSizeOptions]="[10, 15]"
+                   (page)="pageEvent = changePageEvent($event)">
+    </mat-paginator>
+
+  </mat-card>
+</app-teacher-nav>
+

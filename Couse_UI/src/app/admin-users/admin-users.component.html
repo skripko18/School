@@ -1,0 +1,35 @@
+<app-admin-nav>
+  <mat-card class="form-card center">
+    <h1>Список пользователей</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr class="head">
+          <td>ФИО</td>
+          <td>Логин</td>
+          <td>Почта</td>
+          <td>Роль</td>
+          <td>Дата регистрации</td>
+          <td>Статус</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+
+          <td>{{user.FIO}}</td>
+          <td>{{user.UserName}}</td>
+          <td>{{user.Email}}</td>
+          <td>{{user.RoleName}}</td>
+          <td>{{user.Created | dateFormatPipe}}</td>
+          <td>{{user.Status}}</td>
+          <td style="width:150px; text-align:center">
+            <input *ngIf="user.Status == 'Активен'" type="button" value="Заблокировать" (click)="block(user.Id)" class="btn btn-danger" />
+            <input *ngIf="user.Status == 'Заблокирован'" type="button" value="Разблокировать" (click)="unblock(user.Id)" class="btn btn-success" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </mat-card>
+</app-admin-nav>
